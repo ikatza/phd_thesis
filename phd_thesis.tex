@@ -1,0 +1,210 @@
+\documentclass[a4paper, 12pt]{book}
+
+\newcommand{\ttitle}{Thesis title}
+\newcommand{\ssubtitle}{Thesis Subtitle}
+\newcommand{\aauthor}{Name Surname}
+\newcommand{\ppdfauthor}{Surname Name}
+\newcommand{\ssupervisor}{Dr. Supervisor Surname}
+\newcommand{\ddate}{September 2023}
+\newcommand{\ddegree}{Doctor of Philosophy}
+\newcommand{\sschool}{School of Mathematical and Physical Sciences}
+\newcommand{\uuniversity}{University of Sussex}
+\newcommand{\pplace}{Brighton, England}
+
+\input{latex_headers/headers.tex}
+
+\addbibresource{backmatter/Library.bib}
+\input{backmatter/glossary.tex}
+
+% define paths to figures
+\graphicspath{
+  {figures/}
+  {chapters/chap_name1/figures/}
+  {chapters/chap_name2/figures/}
+  {chapters/appendix/appendix_name1/figures/}
+}
+
+
+\begin{document}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Chapters and sections are not numbered
+\frontmatter
+
+\phantomsection
+\addcontentsline{toc}{chapter}{Cover}
+\input{frontmatter/cover.tex}
+
+\cleardoublepage
+\input{frontmatter/declarations.tex}
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Abstract}
+\input{frontmatter/abstract.tex}
+
+% \cleardoublepage
+% % \input{frontmatter/dedication.tex}
+
+% TODO
+\cleardoublepage
+\phantomsection
+\chapter*{Acknowledgements}
+\addcontentsline{toc}{chapter}{Acknowledgements}
+\input{frontmatter/acknowledgments.tex}
+
+% \cleardoublepage
+% \phantomsection
+% \chapter*{Preface}
+% \input{frontmatter/preface.tex}
+% \addcontentsline{toc}{chapter}{Preface}
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Contents}
+\tableofcontents
+
+\cleardoublepage
+\phantomsection
+\listofillustrations
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Main body of text
+\mainmatter
+
+
+\cleardoublepage
+\chapter{Introduction}
+\input{chapters/intro/introduction.tex}
+
+\cleardoublepage
+\chapter{Chapter Name 1}%
+\label{chap:chap_name1}
+\input{chapters/chap_name1/section1.tex}
+\input{chapters/chap_name1/section2.tex}
+
+\cleardoublepage
+\chapter{Chapter Name 2}%
+\label{chap:chap_name2}
+\input{chapters/chap_name2/section1.tex}
+\input{chapters/chap_name2/section2.tex}
+
+
+\cleardoublepage
+\chapter{Conclusions}%
+\label{chap:conclusions}
+\input{chapters/conclusions/conclusions.tex}
+
+
+
+% APPENDIX
+% \cleardoublepage
+% % \phantomsection
+% \addcontentsline{toc}{chapter}{Appendix}
+% \appendix
+% \newpage
+
+% \cleardoublepage
+% \chapter{Voltage Breakdown of Wavelength Shifting Foils }
+% \label{chap:voltage_breakdown}
+% \input{chapters/appendix/hv/voltage_breakdown.tex}
+
+% \cleardoublepage
+% \chapter{Spherical Caps Solid Angles}
+% \label{chap:spherical_cap}
+% \input{chapters/appendix/lightsim/spherical_cap.tex}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Chapters and sections below are not numbered
+\backmatter
+
+
+% BIBLIOGRAPHY
+\cleardoublepage
+\nocite{Ref1,Ref2,Ref3}
+% \nocite{reactorexp}
+\printbibliography[
+  heading=bibintoc,
+  title={Bibliography}
+]
+
+% ACRONYMS
+\cleardoublepage
+\printglossary[title={Glossary and Acronyms}]
+
+
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% ispell-local-dictionary: "british"
+%%% TeX-master: t
+%%% End:
+
+
+
+% Templates to copy paste
+
+\begin{figure}[htb]
+  \begin{center}
+    \includegraphics[width=0.9\textwidth]{missing-image.png}
+    \caption[Caption On TOI.]%
+    {Caption on TOI. %
+      {\color{red}TODO: Then some extra explanation.}%
+    }
+    \label{fig:chap/label}
+  \end{center}
+\end{figure}
+
+
+\begin{figure}[htb]
+  \centering
+  \subfloat%
+    [SubFloat Caption.\label{fig:chap/subA}]%
+    {\includegraphics[width=0.49\textwidth]{missing-image.png}}
+  \hspace{0.01\textwidth}
+  \subfloat%
+    [SubFloat Caption.\label{fig:chap/subB}]%
+    {\includegraphics[width=0.49\textwidth]{missing-image.png}}
+  \caption[Caption of whole figure on TOI.]%
+  {Caption of whole figure on TOI. %
+    {\color{red}TODO: Then some extra explanation.}%
+    \textbf{(a)} Extra info.%
+    \textbf{(b)} Extra info.}%
+  \label{fig:chap/sunNusExps}
+\end{figure}
+
+
+
+\begin{SCfigure}[][p]
+  \includegraphics[width=0.7\textwidth]{missing-image.png}
+  \caption[Caption on TOI.]%
+  {Caption on TOI. %
+    {\color{red}TODO:  Then some extra explanation.}}%
+  \label{fig:chap/label}
+\end{SCfigure}
+
+
+
+\begin{table}[htb]
+  \centering
+  \caption[Caption On TOT.]%
+  {Caption on TOT. %
+    {\color{red}TODO: Then some extra explanation.}}%
+  \label{tab:chap/label}
+  \scalebox{1}{\begin{tabular}[t]{ccc}
+    \toprule
+    Description 1 & Description 2 & Description 3 \\
+    \midrule
+    item1 & item2 & item3 \\
+    item1 & item2 & item3 \\
+    \bottomrule
+   \end{tabular}}
+\end{table}

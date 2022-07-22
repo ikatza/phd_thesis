@@ -1,0 +1,179 @@
+% Purpose: set general formatting of the whole book
+
+% TODO: make sure these numbers make sense for printing like a book
+\geometry{
+  a4paper,
+  twoside=true,
+  outer=2.9cm,
+  inner=3.3cm,
+  top=2.5cm,
+  bottom=3.4cm,
+  headsep=2.9mm,
+  headheight=5.4mm,
+}
+
+\errorcontextlines=3
+
+% For draft: put numbers
+% \linenumbers
+
+% Line spacing
+\onehalfspacing
+% \singlespacing
+
+
+\pagestyle{fancy}
+\setlength\voffset{1cm}
+\fancyheadoffset[LE,RO]{12pt}
+%\setlength\headsep{25pt} %TODO: what are you?
+
+% Dutch style of paragraph formatting, i.e. no indents.
+\setlength{\parskip}{1.3ex plus 0.2ex minus 0.2ex}
+\setlength{\parindent}{0pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% To make sure it doesn't put headings on empty pages at the end of
+% chapters that ended on odd page.
+\makeatletter
+\def\cleardoublepage{\clearpage
+\if@twoside
+  \ifodd\c@page\else
+    \hbox{}
+    \thispagestyle{plain} % set to empty so that the no page number
+    \newpage
+    \if@twocolumn\hbox{}\newpage\fi
+  \fi
+\fi}
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Some other fancyheaders option.
+% Foot notes on the exterior.
+% On odd pages the chapter's tittle is display on the right and italics.
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\chaptermark}[1]{\markboth{ \emph{#1}}{}}
+\fancyhead[LO]{}
+\fancyhead[RE]{\leftmark}
+\fancyfoot[LE,RO]{\thepage}
+\interfootnotelinepenalty=10000 %avoid breaking footnotes into two pages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Modify title format of chapters
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\thechapter}{\Roman{chapter}}
+\titleformat{\chapter}[display]
+{\bfseries\Huge}
+{\filleft\MakeUppercase{\chaptertitlename} \Huge\thechapter}
+{4ex}
+{\titlerule
+  \vspace{2ex}%
+  \filright}
+[\vspace{2ex}%
+\titlerule]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%% Modifica formato de los titulos de los capitulos %%%%%%%
+% Another Chapter Tittle Format Option
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \titleformat{\chapter}[display] % cambiamos el formato de los capítulos
+% {\bfseries\Huge} % por defecto se usarán caracteres de tamaño \Huge en negrita
+% {% contenido de la etiqueta
+% \titlerule[2pt] % línea horizontal
+% \vspace{1pt}
+% \filleft % texto alineado a la derecha
+% \Large\chaptertitlename\ % "Capítulo" o "Apéndice" en tamaño \Large en lugar de \Huge
+% \Large\thechapter} % número de capítulo en tamaño \Large
+% {0mm} % espacio mínimo entre etiqueta y cuerpo
+% {\filleft} % texto del cuerpo alineado a la derecha
+% [\vspace{1pt} \noindent\rule{\textwidth}{2pt}]%\bigrule] % después del cuerpo, dejar espacio vertical y trazar línea horizontal gruesa
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\hypersetup{% no link boxes on TOC
+  pdfauthor={\ppdfauthor},%
+  pdfencoding=auto,%
+  pdftitle={\ttitle},%
+  unicode=true,%
+  % pdftex,%
+  psdextra,
+  linktocpage,%make page number, not text, be link
+  colorlinks,
+  citecolor=dark-blue,%
+  filecolor=black,%
+  linkcolor=dark-green,%
+  urlcolor=NavyBlue
+  % menucolor
+  % runcolor
+  % anchorcolor
+}
+
+\captionsetup[figure]{labelfont=bf}
+\captionsetup[table]{labelfont=bf}
+% \captionsetup[lstlistlisting]{margin=0.5cm,font=footnotesize,labelfont=bf}
+% \captionsetup[algorithmcf]{margin=0.5cm,font=footnotesize,labelfont=bf}
+\captionsetup[subfigure]{labelfont=bf}
+\captionsetup[subtable]{labelfont=bf}
+
+\sidecaptionvpos{figure}{c} % t instead of c for top alignment
+
+
+% \setcounter{secnumdepth}{2} %eg 1.1.1 in subsections
+\setcounter{tocdepth}{2}
+% 2: subsection
+% 3: subsubsection
+% 4:paragraph
+
+
+% toc, tof, tol formatting
+\usepackage[titles]{tocloft}
+\tocloftpagestyle{fancy}
+\setlength{\cftchapnumwidth}{3em}
+\cftsetindents{section}{1em}{4em}
+\cftsetindents{subsection}{1.5em}{3.5em}
+\cftsetindents{figure}{1em}{4em}
+\cftsetindents{table}{1em}{4em}
+
+\pagenumbering{Roman} % roman page numbering i, ii, iii, ...
+
+\AtBeginDocument{%
+  \crefformat{section}{\S#2#1#3} % see manual of cleveref, section 8.2.1
+  \crefformat{subsection}{\S#2#1#3}
+  \crefformat{subsubsection}{\S#2#1#3}
+  \crefmultiformat{section}{\S\S#2#1#3}{ and~#2#1#3}{, #2#1#3}{, and~#2#1#3}
+}
+
+\renewcommand{\thefootnote}{\roman{footnote}}
+\DeclareNewFootnote{default}[roman]
+
+
+% Another set of footnotes, use \footnoteB{}
+% package footmisc is needed
+\DefineFNsymbols*{atoms}{\atomA \atomB \atomC \atomD}
+\DeclareNewFootnote{B}
+\renewcommand{\thefootnoteB}{\fnsymbol{footnoteB}}
+\MakeSortedPerPage{footnoteB}
+\setfnsymbol{atoms}
+
+
+% \defaultfontfeatures{ Scale=MatchLowercase, Ligatures = TeX }
+% \setmainfont{XITS}[Scale = 1.0]
+% \setmathfont{XITS Math}
+% \setmathfont[range={scr,bfscr}, StylisticSet=1]{XITS Math}
+
+\setmainfont{Latin Modern Roman}
+\setmathfont{Latin Modern Math}
+\setmathfont[range={scr,bfscr}, StylisticSet=1]{XITS Math}
+% \setmathfont[range={}]{Latin Modern Math} % perhaps necessary if buggy?
+
+% \setmathfont{STIX Two Math}
+% \setmathfont[range={scr,bfscr}, Scale=MatchUppercase, StylisticSet=1]{STIX Two Math}
+
+% \unimathsetup{math-style=TeX}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% ispell-local-dictionary: "british"
+%%% TeX-master: "../darkneutrino_phdthesis"
+%%% End:
