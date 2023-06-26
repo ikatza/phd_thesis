@@ -109,14 +109,9 @@
 % \newpage
 
 % \cleardoublepage
-% \chapter{Voltage Breakdown of Wavelength Shifting Foils }
-% \label{chap:voltage_breakdown}
-% \input{chapters/appendix/hv/voltage_breakdown.tex}
-
-% \cleardoublepage
-% \chapter{Spherical Caps Solid Angles}
-% \label{chap:spherical_cap}
-% \input{chapters/appendix/lightsim/spherical_cap.tex}
+% \chapter{An appendix chapter}
+% \label{chap:appendix_chap}
+% \input{chapters/appendix/appendix_chap/section1.tex}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -127,7 +122,7 @@
 
 % BIBLIOGRAPHY
 \cleardoublepage
-\nocite{Ref1,Ref2,Ref3}
+% \nocite{Ref1,Ref2,Ref3}
 % \nocite{reactorexp}
 \printbibliography[
   heading=bibintoc,
@@ -153,14 +148,13 @@
 % Templates to copy paste
 
 \begin{figure}[htb]
-  \begin{center}
-    \includegraphics[width=0.9\textwidth]{missing-image.png}
-    \caption[Caption On TOI.]%
-    {Caption on TOI. %
-      {\color{red}TODO: Then some extra explanation.}%
-    }
-    \label{fig:chap/label}
-  \end{center}
+  \centering
+  \includegraphics[width=0.9\textwidth]{missing-image.pdf}
+  \caption[Caption On TOI.]%
+  {Caption on TOI. %
+    {\color{red}TODO: Then some extra explanation.}%
+  }
+  \label{fig:chap/label}
 \end{figure}
 
 
@@ -168,23 +162,48 @@
   \centering
   \subfloat%
     [SubFloat Caption.\label{fig:chap/subA}]%
-    {\includegraphics[width=0.49\textwidth]{missing-image.png}}
+    {\includegraphics[width=0.49\textwidth]{missing-image.pdf}}
   \hspace{0.01\textwidth}
   \subfloat%
     [SubFloat Caption.\label{fig:chap/subB}]%
-    {\includegraphics[width=0.49\textwidth]{missing-image.png}}
+    {\includegraphics[width=0.49\textwidth]{missing-image.pdf}}
   \caption[Caption of whole figure on TOI.]%
   {Caption of whole figure on TOI. %
     {\color{red}TODO: Then some extra explanation.}%
-    \textbf{(a)} Extra info.%
+    \textbf{(a)} Extra info. %
     \textbf{(b)} Extra info.}%
-  \label{fig:chap/sunNusExps}
+  \label{fig:chap/label}
+\end{figure}
+
+
+% Another multi-figure environment, but allowing larger images
+\begin{figure}[htb]
+  \centering
+    \begin{subfigure}[c]{0.75\textwidth}
+      \includegraphics[width=\linewidth,valign=c]{chap/missing-image.pdf}
+    \end{subfigure}\hfill%
+    \adjustbox{minipage=0.25\textwidth,valign=c}{
+      \subcaption{Caption A.%
+        \label{fig:chap/labelA}}}%
+  \vfill
+    \begin{subfigure}[c]{0.75\textwidth}
+      \includegraphics[width=\linewidth,valign=c]{chap/missing-image.pdf}
+    \end{subfigure}\hfill%
+    \adjustbox{minipage=0.25\textwidth,valign=c}{
+      \subcaption{Caption B.%
+        \label{fig:chap/labelB}}}%
+  \caption[Caption of whole figure on TOI.]%
+  {Caption of whole figure on TOI. %
+    {\color{red}TODO: Then some extra explanation.}%
+    \textbf{(a)} Extra info. %
+    \textbf{(b)} Extra info.}%
+  \label{fig:chap/label}
 \end{figure}
 
 
 
 \begin{SCfigure}[][p]
-  \includegraphics[width=0.7\textwidth]{missing-image.png}
+  \includegraphics[width=0.7\textwidth]{missing-image.pdf}
   \caption[Caption on TOI.]%
   {Caption on TOI. %
     {\color{red}TODO:  Then some extra explanation.}}%
@@ -193,18 +212,19 @@
 
 
 
+% example table, L,C,R allow for specif width
 \begin{table}[htb]
   \centering
   \caption[Caption On TOT.]%
   {Caption on TOT. %
     {\color{red}TODO: Then some extra explanation.}}%
   \label{tab:chap/label}
-  \scalebox{1}{\begin{tabular}[t]{ccc}
+  \scalebox{1}{\begin{tabular}[t]{lcr|L{1cm}C{1cm}R{1cm}}
     \toprule
-    Description 1 & Description 2 & Description 3 \\
+    Description 1 & Description 2 & Description 3 & Description 4 & Description 5 & Description 6\\
     \midrule
-    item1 & item2 & item3 \\
-    item1 & item2 & item3 \\
+    item1 & item2 & item3 & item4 & item5 & item6 \\
+    item1 & item2 & item3 & item4 & item5 & item6 \\
     \bottomrule
    \end{tabular}}
 \end{table}

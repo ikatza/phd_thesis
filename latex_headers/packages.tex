@@ -23,7 +23,7 @@
 \usepackage{fontspec}
 \usepackage[symbol*]{footmisc}
 \usepackage{footnote}
-\usepackage{gensymb}
+\usepackage{textcomp, gensymb}
 \usepackage{geometry}
 \usepackage{graphicx}
 \usepackage{ifthen}
@@ -36,19 +36,23 @@
 \usepackage{multirow}
 \usepackage{pifont}
 \usepackage{pdflscape}
+\usepackage[section]{placeins} % put floats on their section
 \usepackage{rotating} % to rotate table by 90 degrees
 \usepackage{setspace}
 \usepackage{sidecap}
-\usepackage[list=true,listformat=simple]{subcaption}
+\usepackage{subcaption}
+% \usepackage{subfig}
 \usepackage{tabularx}
 \usepackage{textcase}
 \usepackage[table, usenames, dvipsnames]{xcolor}%load it before tikz
+\usepackage[export]{adjustbox}
+
 \usepackage{tikz}
+\usetikzlibrary{matrix,shapes,arrows.meta,arrows,positioning,chains,shapes.geometric}
 \usepackage[compat=1.1.0]{tikz-feynman}
 \usepackage{titlesec} % fancy chapter tittles
 \usepackage[bold-style=ISO]{unicode-math}
 \usepackage{wasysym}
-% \usepackage{xspace} % not recommended
 
 \usepackage[
   backend=biber,

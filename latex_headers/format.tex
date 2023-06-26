@@ -1,6 +1,5 @@
 % Purpose: set general formatting of the whole book
 
-% TODO: make sure these numbers make sense for printing like a book
 \geometry{
   a4paper,
   twoside=true,
@@ -11,6 +10,17 @@
   headsep=2.9mm,
   headheight=5.4mm,
 }
+
+
+% % Modify parameters for positioning the floats
+% \renewcommand{\topfraction}{0.7} %default: 0.7
+% \renewcommand{\bottomfraction}{0.3} %default: 0.3
+% \renewcommand{\textfraction}{0.2} %default: 0.2
+% \renewcommand{\floatpagefraction}{0.6} %default: 0.6
+% \setcounter{totalnumber}{3}
+% \setcounter{topnumber}{3}
+% \setcounter{bottomnumber}{2}
+
 
 \errorcontextlines=3
 
@@ -112,14 +122,14 @@
 \captionsetup[table]{labelfont=bf}
 % \captionsetup[lstlistlisting]{margin=0.5cm,font=footnotesize,labelfont=bf}
 % \captionsetup[algorithmcf]{margin=0.5cm,font=footnotesize,labelfont=bf}
-\captionsetup[subfigure]{labelfont=bf}
-\captionsetup[subtable]{labelfont=bf}
+\captionsetup[subfigure]{labelfont=bf,list=true,listformat=simple}
+\captionsetup[subtable]{labelfont=bf,list=true,listformat=simple}
 
 \sidecaptionvpos{figure}{c} % t instead of c for top alignment
 
 
 % \setcounter{secnumdepth}{2} %eg 1.1.1 in subsections
-\setcounter{tocdepth}{2}
+\setcounter{tocdepth}{3}
 % 2: subsection
 % 3: subsubsection
 % 4:paragraph
